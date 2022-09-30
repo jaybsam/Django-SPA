@@ -1,0 +1,19 @@
+{% extends 'products/header.html' %}
+
+{% block content %}
+    <h1 class="uk-heading-small uk-heading-line uk-text-center">
+        <small>Delete {{ object }}</small>
+    </h1>
+    <div uk-grid>
+        <div class="uk-width-1-1">
+            <form method="post">
+                {% csrf_token %}
+                <p class="uk-text-danger" role="alert">
+                  Are you sure to delete {{ object }} ?
+                </p>
+                <input type="submit" class="uk-button uk-button-danger" value="Delete" />
+                <a class="uk-button uk-button-default" href="{% url 'product_list' %}">Go Back</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

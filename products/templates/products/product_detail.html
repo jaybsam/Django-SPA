@@ -1,0 +1,36 @@
+{% extends 'products/header.html' %}
+
+{% block content %}
+    <h1 class="uk-heading-small uk-heading-line uk-text-center">
+        <small> Item #{{ object.id }}</small>
+    </h1>
+    <div uk-grid>
+        <div class="uk-width-1-1">
+            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+                <div class="uk-card-media-left uk-cover-container">
+                    <img src="https://source.unsplash.com/random/200x200?sig={{object.id}}" alt="" uk-cover>
+                    <canvas width="600" height="400"></canvas>
+                </div>
+                <div>
+                    <div class="uk-card-body">
+                        <h3 class="uk-card-title">{{ object.name }}</h3>
+                        <dl class="uk-description-list">
+                            <dt>Description</dt>
+                            <dd>{{ object.description }}</dd>
+                            <dt>Price</dt>
+                            <dd><span class="uk-label uk-label-danger">{{ object.price }}</span></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="uk-margin-medium-top" uk-grid>
+        <div class="uk-width-1-1">
+                <a href="{% url 'product_edit' object.id %}"><button type="button" class="uk-button uk-button-primary">Update</button></a>
+                <a href="{% url 'product_list' %}"><button type="button" class="uk-button uk-button-default">Back</button></a>
+        </div>
+    </div>
+{% endblock %}
